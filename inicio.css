@@ -10,6 +10,51 @@ body {
     background: #f3f6f9;
     color: #263746;
 }
+user-chip {
+    color: #526879;
+    font-size: 13px;
+}
+
+.icon-btn {
+    background: #f3f6f9;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #123b5d;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-outline {
+    border: 1px solid #246aab;
+    color: #246aab;
+    background: transparent;
+}
+
+.btn-primary {
+    background:  #163986;
+    color: white;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    background:  #163986;
+}
+
+.btn-small {
+    padding: 8px 14px;
+}
+
 
 .home-content {
     width: min(1100px, calc(100% - 40px));
