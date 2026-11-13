@@ -10,51 +10,35 @@ body {
     background: #f3f6f9;
     color: #263746;
 }
-user-chip {
-    color: #526879;
-    font-size: 13px;
+/* Organização do cabeçalho */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-.icon-btn {
-    background: #f3f6f9;
-    border: none;
-    padding: 1x;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #123b5d;
+/* Menu */
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 11px 18px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 13px;
-    cursor: pointer;
-    border: none;
+/* Botão sair */
+.btn-sair {
+    padding: 6px 12px;
+    font-size: 11px;
+    border-radius: 6px;
+    margin: 0;
+    white-space: nowrap;
+    text-decoration: none;
 }
 
-.btn-outline {
-    border: 1px solid #246aab;
-    color: #246aab;
-    background: transparent;
-}
-
-.btn-primary {
-    background:  #163986;
-    color: white;
-    margin-top: 15px;
-    transition: 0.2s;
-}
-
-.btn-primary:hover {
-    background:  #163986;
-}
-
+/* Ajuste dos botões pequenos */
 .btn-small {
-    padding: 8px 14px;
+    padding: 6px 12px;
 }
-
 
 .home-content {
     width: min(1100px, calc(100% - 40px));
