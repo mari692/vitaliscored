@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#123b5d">
+
+    <title>Mapa Interativo | Vitaliscore</title>
+
+    <!-- CSS DO PROJETO -->
+    <link rel="stylesheet" href="mapa.css">
+    <link rel="stylesheet" href="comum.css">
+
+    <!-- CSS DO LEAFLET -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="site-header">
+        <div class="header-content">
+            <a class="site-brand" href="index.html"><span class="brand-mark">+</span>Vitaliscore</a>
+            <nav class="site-nav" aria-label="Navegação principal">
+                <a href="index.html">Início</a>
+                <a href="agenda.html">Agenda</a>
+                <a href="cadas.html">Cadastro</a>
+                <a href="mapa.html" aria-current="page">Mapa</a>
+                <a href="login.html">Entrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <section class="tab-content" id="tab-mapa">
+
+            <!-- TÍTULO DA PÁGINA -->
+            <div class="page-heading">
+                <span class="eyebrow">GERENCIAMENTO DE LOCALIZAÇÕES</span>
+                <h2>Áreas com restrição</h2>
+                <p>
+                    Cadastre e visualize regiões que possuem algum
+                    tipo de restrição.
+                </p>
+            </div>
+
+            <div class="content-grid">
+
+                <!-- PAINEL DE CADASTRO -->
+                <div class="panel">
+
+                    <div class="panel-head">
+                        <div>
+                            <span class="eyebrow">MAPA INTERATIVO</span>
+                            <h2>Cadastrar área com restrição</h2>
+                        </div>
+                    </div>
+
+                    <p class="muted">
+                        Clique no mapa para marcar os pontos do contorno
+                        da área. Marque pelo menos 3 pontos e salve.
+                    </p>
+
+                    <form id="zone-form" class="form-grid">
+
+                        <label class="full">
+                            Nome da região
+
+                            <input
+                                type="text"
+                                name="name"
+                                required
+                                placeholder="Ex.: Região do Jardim Primavera"
+                            >
+                        </label>
+
+                        <label class="full">
+                            Motivo da restrição
+
+                            <textarea
+                                name="reason"
+                                rows="4"
+                                required
+                                placeholder="Explique o motivo da restrição"
+                            ></textarea>
+                        </label>
+
+                        <div class="form-actions full">
+
+                            <button
+                                type="button"
+                                class="btn btn-outline"
+                                id="clear-zone"
+                            >
+                                Limpar pontos
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Salvar região
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    <p class="small-note" id="zone-points">
+                        Nenhum ponto marcado.
+                    </p>
+
+                </div>
+
+                <!-- PAINEL DO MAPA -->
+                <div class="panel">
+
+                    <div class="panel-head">
+                        <div>
+                            <span class="eyebrow">LOCALIZAÇÃO</span>
+                            <h2>Marque no mapa</h2>
+                        </div>
+                    </div>
+
+                    <p class="muted">
+                        Selecione os pontos diretamente no mapa
+                        para delimitar uma região.
+                    </p>
+
+                    <!-- MAPA -->
+                    <div id="admin-map" class="map-box"></div>
+
+                    <!-- LEGENDA -->
+                    <div class="map-legend">
+                        <span>
+                            <i class="point-green"></i>
+                            Área em edição
+                        </span>
+
+                        <span>
+                            <i class="point-red"></i>
+                            Área cadastrada
+                        </span>
+                    </div>
+
+                    <!-- LISTA DE REGIÕES -->
+                    <div class="zone-section">
+                        <h3>Regiões cadastradas</h3>
+
+                        <div id="zone-list" class="admin-list">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+        <p>Vitaliscore © 2026 — Sistema de Saúde</p>
+    </footer>
+
+    <!-- BIBLIOTECA LEAFLET -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- JAVASCRIPT DO PROJETO -->
+    <script src="mapa.js"></script>
+
+</body>
+</html>

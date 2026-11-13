@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda | Vitaliscore</title>
+    <link rel="stylesheet" href="agenda.css">
+    <link rel="stylesheet" href="comum.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-content">
+        <a class="site-brand" href="index.html"><span class="brand-mark">+</span>Vitaliscore</a>
+        <nav class="site-nav" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="agenda.html" aria-current="page">Agenda</a>
+            <a href="cadas.html">Cadastro</a>
+            <a href="mapa.html">Mapa</a>
+            
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section class="cabecalho">
+        <h1>Minha agenda</h1>
+        <p class="subtitle">Escolha quando cuidar de você.</p>
+    </section>
+
+    <section class="filtros">
+
+        <div>
+            <label for="ubs">Unidade de saúde</label>
+            <select id="ubs">
+                <option>UBS Rural</option>
+                <option>UBS Jardim Santana</option>
+                <option>UBS jardim sol </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="especialidade">Especialidade</label>
+            <select id="especialidade">
+                <option>Clínica geral</option>
+                <option>Odontologia</option>
+                <option>Pediatria</option>
+                <option>Enfermagem</option>
+            </select>
+        </div>
+
+    </section>
+
+    <section class="calendario">
+
+        <div class="mes">
+            <button type="button" aria-label="Mês anterior" onclick="mudarMes(-1)">‹</button>
+            <strong id="nomeMes"></strong>
+            <button type="button" aria-label="Próximo mês" onclick="mudarMes(1)">›</button>
+        </div>
+
+        <div class="dias" id="calendario"></div>
+
+    </section>
+
+    <section class="agenda">
+        <h2>Data selecionada</h2>
+        <p id="dataSelecionada" class="medico">
+            Selecione uma data.
+        </p>
+
+        <div class="consulta" id="detalhes">
+            Escolha uma data no calendário.
+        </div>
+    </section>
+
+    <section class="avisos">
+
+        <div class="titulo-avisos">
+            <div>
+                <h2>Avisos e notificações</h2>
+                <p>Fique por dentro das novidades da saúde.</p>
+            </div>
+            <span class="sino">♧</span>
+        </div>
+
+        <div id="listaAvisos"></div>
+
+    </section>
+
+</main>
+
+<footer class="site-footer"><p>Vitaliscore © 2026 — Sistema de Saúde</p></footer>
+
+<script src="agenda.js"></script>
+
+</body>
+</html>

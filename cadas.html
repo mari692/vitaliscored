@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitaliscore | Cadastro de Produtos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f6fa;
+            color: #263449;
+        }
+
+        header {
+            background: #123b5d;
+            color: white;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #036481;
+        }
+
+        header p {
+            font-size: 13px;
+            color: #d5e5ef;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .titulo {
+            margin-bottom: 25px;
+        }
+
+        .titulo h1 {
+            color: #123b5d;
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .titulo p {
+            color: #778598;
+            font-size: 14px;
+        }
+
+        .painel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 13px;
+            box-shadow: 0 3px 15px rgba(20, 50, 80, 0.07);
+        }
+
+        .card h2 {
+            color: #123b5d;
+            font-size: 19px;
+            margin-bottom: 22px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #34465c;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dce4ec;
+            border-radius: 7px;
+            outline: none;
+            font-size: 14px;
+            background: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #36bda9;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-cadastrar {
+            background: #123b5d;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-cadastrar:hover {
+            background: #123b5d;
+        }
+
+        .produto {
+            border: 1px solid #e5ebf1;
+            border-left: 4px solid #123b5d;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .produto h3 {
+            color: #123b5d;
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .produto p {
+            font-size: 13px;
+            color: #718096;
+            margin-bottom: 5px;
+        }
+
+        .btn-excluir {
+            background: #fff0f0;
+            color: #d34b4b;
+            margin-top: 10px;
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .aviso {
+            background: #eaf8f6;
+            color: #0f095e;
+            padding: 12px;
+            border-radius: 7px;
+            margin-top: 15px;
+            font-size: 13px;
+            display: none;
+        }
+
+        .vazio {
+            color: #8996a7;
+            text-align: center;
+            padding: 25px 5px;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8996a7;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 20px;
+            }
+
+            main {
+                margin: 25px auto;
+            }
+
+            .painel {
+                grid-template-columns: 1fr;
+            }
+
+            .titulo h1 {
+                font-size: 23px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="comum.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-content">
+        <a class="site-brand" href="index.html"><span class="brand-mark">+</span>Vitaliscore</a>
+        <nav class="site-nav" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="agenda.html">Agenda</a>
+            <a href="cadas.html" aria-current="page">Cadastro</a>
+            <a href="mapa.html">Mapa</a>
+            <a href="login.html">Entrar</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <div class="titulo">
+        <h1>Cadastro de Produtos</h1>
+        <p>Gerencie os produtos e as fichas disponíveis por unidade.</p>
+    </div>
+
+    <div class="painel">
+
+        <section class="card">
+            <h2>Novo cadastro</h2>
+
+            <form id="formProduto">
+
+                <div class="campo">
+                    <label for="unidade">Unidade</label>
+                    <select id="unidade" required>
+                        <option value="">Selecione uma unidade</option>
+                        <option value="Unidade Central">Unidade Central</option>
+                        <option value="Unidade Norte">Unidade Norte</option>
+                        <option value="Unidade Sul">Unidade Sul</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="produto">Nome do produto</label>
+                    <input type="text" id="produto"
+                    placeholder="Digite o nome do produto" required>
+                </div>
+
+                <div class="campo">
+                    <label for="fichas">Quantidade de fichas</label>
+                    <input type="number" id="fichas"
+                    placeholder="Ex: 50" min="0" required>
+                </div>
+
+                <div class="campo">
+                    <label for="aviso">Aviso</label>
+                    <textarea id="aviso"
+                    placeholder="Digite um aviso sobre o produto..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-cadastrar">
+                    Cadastrar produto
+                </button>
+
+                <div class="aviso" id="mensagem" role="status" aria-live="polite"></div>
+
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Avisos</h2>
+
+            <div id="listaProdutos">
+                <div class="vazio">
+                    Nenhum AVISO.
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="site-footer">
+    <p>Vitaliscore © 2026 — Sistema de Saúde</p>
+</footer>
+
+<script>
+    let produtos = JSON.parse(localStorage.getItem("produtosVitalis")) || [];
+
+    const formulario = document.getElementById("formProduto");
+    const lista = document.getElementById("listaProdutos");
+    const mensagem = document.getElementById("mensagem");
+
+    function salvar() {
+        localStorage.setItem("produtosVitalis", JSON.stringify(produtos));
+    }
+
+    function mostrarProdutos() {
+
+        lista.innerHTML = "";
+
+        if (produtos.length === 0) {
+            lista.innerHTML = `
+                <div class="vazio">
+                    Nenhum produto cadastrado.
+                </div>
+            `;
+            return;
+        }
+
+        produtos.forEach((item, index) => {
+            const produto = document.createElement("article");
+            produto.className = "produto";
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = item.nome;
+            produto.appendChild(titulo);
+
+            [
+                ["Unidade:", item.unidade],
+                ["Fichas:", String(item.fichas)],
+                ["Aviso:", item.aviso || "Nenhum aviso"]
+            ].forEach(([rotulo, valor]) => {
+                const paragrafo = document.createElement("p");
+                const forte = document.createElement("strong");
+                forte.textContent = rotulo + " ";
+                paragrafo.append(forte, document.createTextNode(valor));
+                produto.appendChild(paragrafo);
+            });
+
+            const excluir = document.createElement("button");
+            excluir.type = "button";
+            excluir.className = "btn-excluir";
+            excluir.dataset.index = String(index);
+            excluir.textContent = "Excluir produto";
+            produto.appendChild(excluir);
+            lista.appendChild(produto);
+        });
+    }
+
+    lista.addEventListener("click", function(event) {
+        const botao = event.target.closest(".btn-excluir");
+        if (!botao || !lista.contains(botao)) return;
+        produtos.splice(Number(botao.dataset.index), 1);
+        salvar();
+        mostrarProdutos();
+    });
+
+    formulario.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const unidade = document.getElementById("unidade").value;
+        const nome = document.getElementById("produto").value.trim();
+        const fichas = document.getElementById("fichas").value;
+        const aviso = document.getElementById("aviso").value.trim();
+
+        if (!nome || fichas === "" || Number(fichas) < 0) {
+            return;
+        }
+
+        produtos.push({
+            unidade: unidade,
+            nome: nome,
+            fichas: Number(fichas),
+            aviso: aviso
+        });
+
+        salvar();
+        mostrarProdutos();
+
+        formulario.reset();
+
+        mensagem.textContent = "Produto cadastrado com sucesso!";
+        mensagem.style.display = "block";
+
+        setTimeout(() => {
+            mensagem.style.display = "none";
+        }, 3000);
+    });
+
+    mostrarProdutos();
+</script>
+
+</body>
+</html>

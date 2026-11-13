@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#123b5d">
+
+    <title>Área pública | Saúde em Fila</title>
+
+    <link rel="stylesheet" href="pupalaçao.css">
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="topbar">
+
+        <a class="brand" href="index.html">
+            <span class="brand-mark">+</span>
+            <span>Saúde <b>em Fila</b></span>
+        </a>
+
+        <nav class="mini-menu">
+            <a href="#menu">Inicio</a>
+            <a href="#mapa">Mapa</a>
+        </nav>
+
+        <div class="top-actions">
+            <span class="user-chip" id="user-greeting">Olá!</span>
+
+            <button class="icon-btn" data-theme-toggle>
+                ◐ <span class="theme-label">Modo escuro</span>
+            </button>
+
+            <a class="btn btn-outline btn-small" href="index.html">
+                Sair
+            </a>
+        </div>
+
+    </header>
+
+
+    <main class="page-main">
+
+        <!-- MENU / APRESENTAÇÃO -->
+        <section class="page-title" id="menu">
+
+            <div>
+                <span class="eyebrow">ÁREA DO CIDADÃO</span>
+
+                <h1>
+                    Olá, <span id="public-name">visitante</span> 👋
+                </h1>
+
+                <p>
+                    Confira a programação de hoje e acompanhe
+                    os alertas de saúde da sua região.
+                </p>
+            </div>
+
+            <div class="date-pill" id="today-label"></div>
+
+        </section>
+
+
+<!-- CARDS DE FICHAS -->
+<section class="ticket-summary">
+
+    <article class="ticket-card available">
+        <div class="ticket-icon">✓</div>
+        <div>
+            <span class="ticket-label">Fichas disponíveis</span>
+            <h2>48</h2>
+            <p>Vagas disponíveis para atendimento</p>
+        </div>
+    </article>
+
+    <article class="ticket-card reserved">
+        <div class="ticket-icon">▣</div>
+        <div>
+            <span class="ticket-label">Fichas reservadas</span>
+            <h2>06</h2>
+            <p>Vagas que já foram reservadas</p>
+        </div>
+    </article>
+
+</section>
+
+        <!-- PROGRAMAÇÃO -->
+        <section class="panel">
+
+            <div class="panel-head">
+                <div>
+                    <span class="eyebrow">PROGRAMAÇÃO DE HOJE</span>
+                    <h2>Horários de atendimento</h2>
+                </div>
+
+                <span class="panel-icon">▦</span>
+            </div>
+
+            <div id="schedule-list" class="schedule-list">
+
+                <article class="schedule-card">
+
+                    <div class="schedule-time">
+                        <span>14:00 ate as 17:00</span>
+                        <small>Á tarde</small>
+                    </div>
+
+                    <div class="schedule-info">
+                        <h3>Atendimento e orientação sobre dengue</h3>
+
+                        <p>
+                            Orientações sobre prevenção, identificação
+                            de sintomas e combate aos focos do mosquito.
+                        </p>
+
+                        <span class="schedule-unit">
+                            UBS das Mulheres
+                        </span>
+                    </div>
+
+                    <span class="status-badge">
+                        Programado
+                    </span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- AVISOS -->
+        <section class="panel agenda-panel">
+
+            <div class="panel-head">
+
+                <div>
+                    <span class="eyebrow">FIQUE POR DENTRO</span>
+                    <h2>Avisos importantes</h2>
+                </div>
+
+                <span class="panel-icon">!</span>
+
+            </div>
+
+            <div id="public-events" class="event-list">
+
+                <article class="notice-card">
+                    <span class="notice-tag">ALERTA DE DENGUE</span>
+
+                    <h3>Combata os focos do mosquito!</h3>
+
+                    <p>
+                        Evite água parada em vasos, pneus, garrafas
+                        e recipientes. Faça uma vistoria em sua
+                        residência semanalmente.
+                    </p>
+                </article>
+
+                <article class="notice-card">
+                    <span class="notice-tag">COMUNICADO</span>
+
+                    <h3>Cuide da sua saúde</h3>
+
+                    <p>
+                        Em caso de febre, dores no corpo ou outros
+                        sintomas suspeitos, procure uma unidade
+                        de saúde. Evite a automedicação.
+                    </p>
+                </article>
+
+                <article class="notice-card">
+                    <span class="notice-tag">PREVENÇÃO</span>
+
+                    <h3>Proteja sua comunidade</h3>
+
+                    <p>
+                        Ajude a identificar possíveis criadouros
+                        e comunique os focos às autoridades de saúde.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- UNIDADE DE SAÚDE -->
+        <section class="panel unit-panel">
+
+            <div class="panel-head">
+                <div>
+                    <span class="eyebrow">UNIDADE DE SAÚDE</span>
+                    <h2>Informações da unidade</h2>
+                </div>
+            </div>
+
+            <article class="unit-card">
+
+                <div class="unit-icon">+</div>
+
+                <div class="unit-info">
+
+                    <span class="notice-tag">ATENÇÃO À DENGUE</span>
+
+                    <h3>UBS das Mulheres</h3>
+
+                    <p>
+                        Unidade de saúde com informações e orientações
+                        sobre prevenção e combate à dengue.
+                    </p>
+
+                    <a href="#mapa" class="btn btn-primary">
+                        Ver mapa
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- MAPA -->
+        <section class="panel map-panel" id="mapa">
+
+            <div class="panel-head">
+
+                <div>
+                    <span class="eyebrow">INFORMAÇÃO TERRITORIAL</span>
+
+                    <h2>Mapa de áreas com alerta de dengue</h2>
+
+                    <p class="muted">
+                        Consulte os pontos ilustrativos de atenção
+                        e prevenção contra a dengue.
+                    </p>
+                </div>
+
+                <span class="panel-icon">⌖</span>
+
+            </div>
+
+            <div id="public-map" class="map-box"></div>
+
+            <div class="map-legend">
+
+                <span>
+                    <i class="legend-red"></i>
+                    Área de atenção ilustrativa
+                </span>
+
+                <span>
+                    <i class="legend-blue"></i>
+                    Unidade de saúde
+                </span>
+
+            </div>
+
+            <!-- AVISO ABAIXO DO MAPA -->
+            <article class="map-alert">
+
+                <div class="alert-icon">!</div>
+
+                <div>
+                    <h3>Atenção: prevenção contra a dengue</h3>
+
+                    <p>
+                        Os pontos destacados são apenas exemplos
+                        para demonstração do mapa. Consulte a
+                        Vigilância Epidemiológica para informações
+                        oficiais sobre os locais de risco.
+                    </p>
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="site-footer">
+        Saúde em Fila · Informações demonstrativas.
+        Em caso de dúvida, procure sua unidade de saúde.
+    </footer>
+
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+
+        // DATA ATUAL
+        const hoje = new Date();
+
+        document.getElementById("today-label").textContent =
+            hoje.toLocaleDateString("pt-BR", {
+                weekday: "long",
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            });
+
+
+        // MAPA
+        const mapa = L.map("public-map").setView(
+            [-25.4284, -49.2733], 13
+        );
+
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                attribution: '&copy; OpenStreetMap'
+            }
+        ).addTo(mapa);
+
+
+        // ÁREAS ILUSTRATIVAS DE ATENÇÃO
+        const areas = [
+            {
+                nome: "Área de atenção 1",
+                coordenadas: [-25.4250, -49.2700]
+            },
+            {
+                nome: "Área de atenção 2",
+                coordenadas: [-25.4350, -49.2800]
+            },
+            {
+                nome: "Área de atenção 3",
+                coordenadas: [-25.4200, -49.2900]
+            }
+        ];
+
+
+        areas.forEach(function(area) {
+
+            L.circle(area.coordenadas, {
+                color: "#dc4545",
+                fillColor: "#ed6868",
+                fillOpacity: 0.30,
+                radius: 350
+            }).addTo(mapa)
+              .bindPopup(
+                "<b>" + area.nome + "</b><br>Área ilustrativa de atenção à dengue."
+              );
+
+        });
+
+
+        // UBS DAS MULHERES - LOCALIZAÇÃO DEMONSTRATIVA
+        L.marker([-25.4284, -49.2733])
+            .addTo(mapa)
+            .bindPopup(
+                "<b>UBS das Mulheres</b><br>Unidade de saúde (localização demonstrativa)."
+            );
+
+
+        // BOTÃO VER MAPA / AJUSTE DE VISUALIZAÇÃO
+        document.querySelectorAll('a[href="#mapa"]').forEach(function(botao) {
+
+            botao.addEventListener("click", function() {
+
+                setTimeout(function() {
+                    mapa.invalidateSize();
+                }, 200);
+
+            });
+
+        });
+
+
+        // MODO ESCURO
+        const themeButton = document.querySelector("[data-theme-toggle]");
+
+        themeButton.addEventListener("click", function() {
+
+            document.body.classList.toggle("dark-mode");
+
+        });
+
+    </script>
+
+</body>
+</html>

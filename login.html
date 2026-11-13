@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7f5">
+    <title>Login | Vitaliscore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7f5;
+            color: #123b5d;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 0;
+            display: block;
+            border-bottom: 0;
+        }
+
+        main {
+            flex: 1;
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .welcome .eyebrow,
+        .form-box .eyebrow {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #20a994;
+            font-weight: bold;
+        }
+
+        .welcome h1 {
+            font-size: 43px;
+            line-height: 1.2;
+            margin: 18px 0;
+        }
+
+        .welcome h1 span {
+            color: #20b49e;
+        }
+
+        .welcome p {
+            color: #718096;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(18, 59, 93, 0.07);
+        }
+
+        .panel h2 {
+            font-size: 21px;
+            margin: 12px 0 7px;
+        }
+
+        .description {
+            color: #84909e;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .role-options {
+            display: grid;
+            gap: 13px;
+        }
+
+        .role-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 19px;
+            background: white;
+            border: 1px solid #e1eae7;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: .2s;
+        }
+
+        .role-card:hover {
+            border-color: #20b49e;
+            background: #f2fbf9;
+        }
+
+        .role-icon {
+            width: 43px;
+            height: 43px;
+            border-radius: 10px;
+            background: #e7f7f3;
+            color: #159c88;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+        }
+
+        .role-info {
+            flex: 1;
+        }
+
+        .role-info b {
+            display: block;
+            color: #123b5d;
+            margin-bottom: 5px;
+        }
+
+        .role-info small {
+            color: #82909d;
+            font-size: 12px;
+        }
+
+        .arrow {
+            color: #20b49e;
+            font-size: 20px;
+        }
+
+        .form-box {
+            display: none;
+        }
+
+        .form-box.active {
+            display: block;
+        }
+
+        .back {
+            background: transparent;
+            color: #20a994;
+            padding: 0;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .field {
+            margin-top: 17px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dce6e3;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #20b49e;
+        }
+
+        .submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #20b49e;
+            color: white;
+            font-weight: bold;
+            margin-top: 23px;
+            cursor: pointer;
+        }
+
+        .submit:hover {
+            background: #159985;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #159985;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #84909e;
+        }
+
+        @media(max-width: 750px) {
+            main {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 35px 0;
+            }
+
+            .welcome h1 {
+                font-size: 34px;
+            }
+
+            .panel {
+                padding: 23px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="comum.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+    <div class="header-content">
+        <a class="site-brand" href="index.html"><span class="brand-mark">+</span>Vitaliscore</a>
+        <nav class="site-nav" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="agenda.html">Agenda</a>
+            <a href="cadas.html">Cadastro</a>
+            <a href="mapa.html">Mapa</a>
+            <a href="login.html" aria-current="page">Entrar</a>
+        </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <span class="eyebrow">SISTEMA DE ATENDIMENTO MUNICIPAL</span>
+
+            <h1>
+                Bem-vindo ao<br>
+                <span>Vitaliscore.</span>
+            </h1>
+
+            <p>
+                Acesse informações sobre unidades de saúde,
+                atendimentos e comunicados em um só lugar.
+            </p>
+        </section>
+
+        <section class="panel">
+
+            <!-- ESCOLHA DE PERFIL -->
+
+            <div id="escolha">
+
+                <span class="eyebrow">ACESSO AO SISTEMA</span>
+                <h2>Selecione seu perfil</h2>
+
+                <p class="description">
+                    Escolha uma opção para continuar.
+                </p>
+
+                <div class="role-options">
+
+                    <button class="role-card" onclick="abrirPerfil('populacao')">
+
+                        <span class="role-icon">♙</span>
+
+                        <span class="role-info">
+                            <b>População</b>
+                            <small>Consultar informações e atendimentos</small>
+                        </span>
+
+                        <span class="arrow">→</span>
+
+                    </button>
+
+                    <button class="role-card" onclick="abrirPerfil('saude')">
+
+                        <span class="role-icon">✚</span>
+
+                        <span class="role-info">
+                            <b>Área da Saúde</b>
+                            <small>Acesso dos profissionais de saúde</small>
+                        </span>
+
+                        <span class="arrow">→</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- LOGIN POPULAÇÃO -->
+
+            <div class="form-box" id="populacao">
+
+                <button class="back" onclick="voltar()">← Voltar</button>
+
+                <span class="eyebrow">ACESSO DA POPULAÇÃO</span>
+
+                <h2>Identificação</h2>
+
+                <p class="description">
+                    Informe seus dados para continuar.
+                </p>
+
+                <form onsubmit="entrar(event, 'populacao')">
+
+                    <div class="field">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome"
+                            placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="ubsPopulacao">UBS mais próxima</label>
+                        <input type="text" id="ubsPopulacao"
+                            placeholder="Digite o nome da UBS" required>
+                    </div>
+
+                 
+                    <button class="submit
+                    " type="button" onclick="window.location.href='populaçao.html'">
+
+                </form>
+
+            </div>
+
+            <!-- LOGIN ÁREA DA SAÚDE -->
+
+            <div class="form-box" id="saude">
+
+                <button class="back" onclick="voltar()">← Voltar</button>
+
+                <span class="eyebrow">ACESSO PROFISSIONAL</span>
+
+                <h2>Área da Saúde</h2>
+
+                <p class="description">
+                    Informe os dados da sua unidade.
+                </p>
+
+                <form onsubmit="entrar(event, 'saude')">
+
+                    <div class="field">
+                        <label for="ubsSaude">UBS</label>
+                        <input type="text" id="ubsSaude"
+                            placeholder="Digite o nome da UBS" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha"
+                            placeholder="Digite sua senha" required>
+                    </div>
+
+                    <button class="submit
+                    " type="button" onclick="window.location.href='index.html'">
+                   Entrar
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <p class="message" id="mensagem"></p>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Vitaliscore · Sistema demonstrativo de organização da saúde pública</p>
+    </footer>
+
+    <script>
+        function abrirPerfil(perfil) {
+
+            document.getElementById("escolha").style.display = "none";
+
+            document.querySelectorAll(".form-box").forEach(form => {
+                form.classList.remove("active");
+            });
+
+            document.getElementById(perfil).classList.add("active");
+        }
+
+        function voltar() {
+
+            document.getElementById("escolha").style.display = "block";
+
+            document.querySelectorAll(".form-box").forEach(form => {
+                form.classList.remove("active");
+            });
+
+            document.getElementById("mensagem").style.display = "none";
+        }
+
+        function entrar(event, perfil) {
+
+            event.preventDefault();
+
+            if (perfil === "populacao") {
+
+                const nome = document.getElementById("nome").value;
+                const ubs = document.getElementById("ubsPopulacao").value;
+
+                localStorage.setItem("nomeUsuario", nome);
+                localStorage.setItem("ubsUsuario", ubs);
+                localStorage.setItem("perfilUsuario", "populacao");
+
+            } else {
+
+                const ubs = document.getElementById("ubsSaude").value;
+                const senha = document.getElementById("senha").value;
+
+                // Demonstração: não autentica de verdade.
+                if (!ubs.trim() || !senha.trim()) return;
+
+                localStorage.setItem("ubsProfissional", ubs);
+                localStorage.setItem("perfilUsuario", "saude");
+
+                window.location.href = "mapa.html";
+                return;
+            }
+
+            const mensagem = document.getElementById("mensagem");
+
+            mensagem.textContent = "Dados recebidos! Login demonstrativo.";
+            mensagem.style.display = "block";
+        }
+
+    </script>
+
+</body>
+</html>

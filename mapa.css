@@ -1,0 +1,99 @@
+﻿/* Mapa interativo - Vitaliscore */
+:root {
+    --navy: #123b5d;
+    --green: #246aa2;
+    --text: #263746;
+    --muted: #687887;
+    --line: #dce5ec;
+    --surface: #ffffff;
+    --surface-2: #f3f7fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: #f3f6f9;
+}
+
+.site-header {
+    background: var(--navy);
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(18, 59, 93, .14);
+}
+
+.header-content {
+    max-width: 1180px;
+    min-height: 78px;
+    padding: 14px 24px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.main-content { width: min(1180px, calc(100% - 40px)); margin: 38px auto 52px; }
+.page-heading { margin-bottom: 25px; }
+.eyebrow { color: var(--green); font-size: 10px; line-height: 1.4; font-weight: 800; letter-spacing: 1.15px; }
+.page-heading h2 { margin: 7px 0 8px; color: var(--navy); font-size: clamp(25px, 3vw, 32px); }
+.page-heading p, .muted { color: var(--muted); line-height: 1.6; }
+.page-heading p { max-width: 620px; margin: 0; font-size: 14px; }
+
+.content-grid { display: grid; grid-template-columns: minmax(300px, .82fr) minmax(0, 1.35fr); align-items: start; gap: 20px; }
+.panel { min-width: 0; padding: 23px; }
+.panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+.panel-head h2 { margin: 5px 0 0; color: var(--navy); font-size: 19px; line-height: 1.35; }
+.muted { margin: 12px 0 19px; font-size: 13px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grid label { display: flex; flex-direction: column; gap: 8px; color: #344a5b; font-size: 13px; font-weight: 650; }
+.form-grid .full { grid-column: 1 / -1; }
+.form-grid input, .form-grid textarea { width: 100%; border: 1px solid #d5e0e8; border-radius: 9px; outline: none; background: #fff; color: var(--text); font: inherit; font-size: 14px; padding: 11px 12px; transition: border-color .15s, box-shadow .15s; }
+.form-grid textarea { min-height: 112px; resize: vertical; }
+.form-grid input::placeholder, .form-grid textarea::placeholder { color: #98a6b2; font-weight: 400; }
+.form-grid input:focus, .form-grid textarea:focus { border-color: #4c9b79; box-shadow: 0 0 0 3px rgba(22,134,83,.12); }
+.form-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+.btn { min-height: 41px; padding: 10px 15px; border: 1px solid transparent; border-radius: 9px; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; transition: transform .15s, background .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: #246aa2; }
+.btn-outline { border-color: #d4dfe7; background: #fff; color: #43596a; }
+.btn-outline:hover { background: #f3f7fa; }
+.small-note { min-height: 18px; margin: 13px 0 0; color: var(--muted); font-size: 12px; }
+
+.map-panel { margin-top: 18px; }
+.map-box { z-index: 1; width: 100%; height: 390px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.map-legend { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 22px; margin-top: 13px; color: #526576; font-size: 12px; }
+.map-legend span { display: inline-flex; align-items: center; }
+.map-legend i { display: inline-block; width: 10px; height: 10px; margin-right: 7px; border-radius: 50%; }
+.point-green { background: #16845a; }
+.point-red { background: #c34d4d; }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--text); }
+.leaflet-container { font-family: inherit; }
+.leaflet-control-attribution { font-size: 9px !important; }
+.zone-section { margin-top: 25px; padding-top: 19px; border-top: 1px solid #e8edf1; }
+.zone-section h3 { margin: 0 0 13px; color: var(--navy); font-size: 15px; }
+.admin-list { display: flex; flex-direction: column; gap: 10px; }
+.admin-list:empty { display: none; }
+.admin-list .produto { padding: 14px; border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: 9px; background: var(--surface-2); }
+.admin-list .produto h3 { margin: 0 0 7px; color: var(--navy); font-size: 15px; }
+.admin-list .produto p { margin: 5px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+@media (max-width: 850px) {
+    .content-grid { grid-template-columns: 1fr; }
+    .map-box { height: 340px; }
+}
+
+@media (max-width: 520px) {
+    .header-content { min-height: 68px; padding: 12px 0; }
+    .main-content { width: calc(100% - 28px); margin: 27px auto 38px; }
+    .page-heading { margin-bottom: 19px; }
+    .panel { padding: 18px; border-radius: 13px; }
+    .panel-head h2 { font-size: 17px; }
+    .map-box { height: 300px; }
+    .form-actions { justify-content: stretch; }
+    .form-actions .btn { flex: 1; }
+}
